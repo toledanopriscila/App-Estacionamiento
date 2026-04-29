@@ -1,1 +1,18 @@
-# Taller_mecanico_web2
+Sistema de Gestión de Estacionamiento AutónomoDescripciónEste proyecto es una API RESTful desarrollada en Flask para gestionar un sistema de estacionamiento, permitiendo controlar vehículos, ingresos, egresos y tarifas. 
+
+Integrantes del Grupo: Priscila Toledano, Selene Quintero
+
+Requisitos Técnicos Backend: Flask
+   
+ORM: SQLAlchemy   
+Base de Datos: MySQL   
+Configuración: Uso de variables de entorno con .env   
+Endpoints PrincipalesGET /vehiculos: Registrar o listar vehículos. 
+ 
+GET /ingreso: Registrar entrada.  
+GET /egreso: Registrar salida y cálculo de tarifa.  
+GET /espacios: Ver lugares disponibles.  
+Cómo EjecutarClonar el repositorio.  
+Instalar dependencias: pip install -r requirements.txt.  
+Configurar el archivo .env.
+Ejecutar: python Taller.py.
