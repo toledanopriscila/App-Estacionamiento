@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Panel Estacionamiento</title>
+</head>
+<body>
+    <h1>Sistema de Gestión de Estacionamiento</h1>
+
+    <!-- El pedacito agregado empieza acá -->
+    <div style="background-color: #f0f0f0; padding: 10px; border-radius: 5px;">
+        <h3>Estado del Estacionamiento</h3>
+        <p>Lugares disponibles: <strong>{{ libres }}</strong></p>
+    </div>
+    <!-- El pedacito agregado termina acá -->
+
+    <hr>
+    <ul>
+        <li><a href="/registro">Registrar Nuevo Usuario</a></li>
+        <li><a href="/registrar_vehiculo">Dar de Alta Vehículo</a></li>
+        <li><a href="/tarifas">Configurar Precios</a></li>
+        <br>
+        <li><a href="/entrada"><strong>MARCAR ENTRADA</strong></a></li>
+        <li><a href="/salida"><strong>MARCAR SALIDA (COBRAR)</strong></a></li>
+    </ul>
+</body>
+</html>
