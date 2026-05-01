@@ -1,26 +1,34 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
+    <meta charset="UTF-8">
     <title>Panel Estacionamiento</title>
+    
+    <!-- Conectamos el CSS de la carpeta static -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/estilos.css') }}">
 </head>
 <body>
     <h1>Sistema de Gestión de Estacionamiento</h1>
 
-    <!-- El pedacito agregado empieza acá -->
-    <div style="background-color: #f0f0f0; padding: 10px; border-radius: 5px;">
+    <!-- Sección de Disponibilidad con el borde azul del CSS -->
+    <div class="disponibilidad">
         <h3>Estado del Estacionamiento</h3>
         <p>Lugares disponibles: <strong>{{ libres }}</strong></p>
     </div>
-    <!-- El pedacito agregado termina acá -->
 
     <hr>
+
+    <!-- Lista de acciones con los bordes de colores -->
     <ul>
         <li><a href="/registro">Registrar Nuevo Usuario</a></li>
         <li><a href="/registrar_vehiculo">Dar de Alta Vehículo</a></li>
         <li><a href="/tarifas">Configurar Precios</a></li>
+        
         <br>
-        <li><a href="/entrada"><strong>MARCAR ENTRADA</strong></a></li>
-        <li><a href="/salida"><strong>MARCAR SALIDA (COBRAR)</strong></a></li>
+        
+        <!-- Estas clases usan el borde verde y rojo que definiste en el CSS -->
+        <li class="boton-entrada"><a href="/entrada"><strong>MARCAR ENTRADA</strong></a></li>
+        <li class="boton-salida"><a href="/salida"><strong>MARCAR SALIDA (COBRAR)</strong></a></li>
     </ul>
 </body>
 </html>

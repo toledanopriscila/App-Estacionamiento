@@ -17,8 +17,7 @@ def gestionar_tarifas():
     config = Configuracion.query.first()
 
     if request.method == 'POST':
-        # Sacamos los datos del formulario
-        # Ojo: los nombres en request.form.get deben coincidir con el 'name' de tu HTML
+        
         t_hora = request.form.get('tarifa_hora')
         t_media = request.form.get('tarifa_media_estadia')
         t_dia = request.form.get('tarifa_dia_completo')
