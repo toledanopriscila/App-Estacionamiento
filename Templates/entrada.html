@@ -1,16 +1,21 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/estilos.css') }}">
+</head>
 <body>
-    <h1>Confirmar Entrada</h1>
-    <p>Usuario: <b>{{ session['usuario_nombre'] }}</b></p>
-    <p>Vehículo detectado: <b>{{ vehiculo.patente }}</b> ({{ vehiculo.tipo }})</p>
-    
-    <form method="POST">
-        <button type="submit" style="padding: 20px; background: #27ae60; color: white; border: none; cursor: pointer;">
-            CONFIRMAR ENTRADA AHORA
-        </button>
-    </form>
-    <br>
-    <a href="/">Cancelar y volver</a>
+    <div class="container">
+        <h1>Confirmar Entrada</h1>
+        <div class="disponibilidad">
+            <p>Vehículo detectado: <b>{{ vehiculo.patente }}</b></p>
+            <p>Modelo: {{ vehiculo.modelo }}</p>
+        </div>
+        <form method="POST">
+            <button type="submit" class="boton-entrada">REGISTRAR ENTRADA AHORA</button>
+        </form>
+        <br>
+        <a href="/" style="text-align:center;">Volver al Menú</a>
+    </div>
 </body>
 </html>

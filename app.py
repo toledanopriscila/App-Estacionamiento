@@ -13,11 +13,11 @@ from Router.usuario_routes import usuario_bp
 
 app = Flask(__name__)
 
-# Configuración esencial
+
 app.secret_key = 'mi_clave_secreta_super_segura' 
 app.config.from_object(Config)
 
-# Registro de Blueprints
+
 app.register_blueprint(usuario_bp)
 app.register_blueprint(config_bp)
 app.register_blueprint(registro_bp)

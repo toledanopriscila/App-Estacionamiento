@@ -1,42 +1,54 @@
 from flask import render_template, request, redirect, url_for, session
 from Models.vehiculo import Vehiculo
 from Models.registro import Registro
-from Models.configuracion import Configuracion # Agregamos esto
+from Models.configuracion import Configuracion
 from Models import db
 from datetime import datetime
-import math # Para redondear el tiempo
+import math
 
-# ... (registrar_entrada queda igual) ...
+def registrar_entrada():
+    u_id = session.get('usuario_id')
+    if not u_id:
+        return redirect(url_for('usuario.login_usuario'))
+
+    # Buscamos el vehículo del usuario logueado
+    vehiculo = Vehiculo.query.filter_by(usuario_id=u_id).first()
+
+    if not vehiculo:
+        return "Primero debes cargar los datos de tu vehículo en el menú principal."
+
+    if request.method == 'POST':
+        # Registramos la entrada con la hora actual
+        nueva_entrada = Registro(vehiculo_id=vehiculo.id, hora_entrada=datetime.now())
+        vehiculo.estado = 'dentro'
+        
+        db.session.add(nueva_entrada)
+        db.session.commit()
+        return redirect(url_for('inicio'))
+            
+    return render_template('entrada.html', vehiculo=vehiculo)
 
 def registrar_salida():
     if request.method == 'POST':
         patente = request.form.get('patente').strip()
         vehiculo = Vehiculo.query.filter_by(patente=patente).first()
-        config = Configuracion.query.first() # Traemos las tarifas del admin
+        config = Configuracion.query.first()
         
         if vehiculo:
             registro = Registro.query.filter_by(vehiculo_id=vehiculo.id, hora_salida=None).first()
             if registro:
-                # 1. Marcamos la salida
                 ahora = datetime.now()
                 registro.hora_salida = ahora
                 vehiculo.estado = 'fuera'
                 
-                # 2. CALCULAR TIEMPO (en horas)
+                # Cálculo de tiempo y dinero
                 diferencia = ahora - registro.hora_entrada
-                horas_total = diferencia.total_seconds() / 3600
-                
-                # Cobro mínimo de 1 hora si pasó menos tiempo
-                if horas_total < 1:
-                    horas_total = 1
-                
-                # 3. CALCULAR TOTAL
-                # Usamos la tarifa_hora que cargaste en el panel de admin
+                horas_total = max(1, diferencia.total_seconds() / 3600)
                 total_pagar = math.ceil(horas_total) * config.tarifa_hora
                 
                 db.session.commit()
 
-                # 4. ENVIAR A LA PANTALLA DE COBRO (No al inicio)
+                # Mandamos a la pantalla de ticket con estilo
                 return render_template('cobro_detalle.html', 
                                        vehiculo=vehiculo, 
                                        total=total_pagar, 
