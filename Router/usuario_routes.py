@@ -1,8 +1,8 @@
 from flask import Blueprint
-from Controllers.usuario_controller import registrar_usuario
+from Controllers.usuario_controller import registrar_usuario, login_usuario, logout_usuario
 
-# Creamos un Blueprint (es como un mapa de rutas)
 usuario_bp = Blueprint('usuario', __name__)
 
-# Definimos la ruta de registro
 usuario_bp.route('/registro', methods=['GET', 'POST'])(registrar_usuario)
+usuario_bp.route('/login', methods=['GET', 'POST'])(login_usuario)
+usuario_bp.route('/logout')(logout_usuario)

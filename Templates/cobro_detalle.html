@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ticket de Salida</title>
+    <style>
+        .ticket { border: 2px solid black; padding: 20px; width: 300px; margin: auto; text-align: center; font-family: monospace; }
+        .monto { font-size: 24px; color: green; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class="ticket">
+        <h2>TICKET DE COBRO</h2>
+        <hr>
+        <p>Vehículo: <b>{{ vehiculo.patente }}</b></p>
+        <p>Tiempo de estadía: {{ tiempo }} hs</p>
+        <hr>
+        <p>TOTAL A PAGAR:</p>
+        <p class="monto">${{ total }}</p>
+        <hr>
+        <a href="/">FINALIZAR Y VOLVER</a>
+    </div>
+</body>
+</html>

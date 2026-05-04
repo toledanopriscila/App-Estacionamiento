@@ -12,48 +12,37 @@ from Router.vehiculo_routes import vehiculo_bp
 from Router.usuario_routes import usuario_bp
 
 app = Flask(__name__)
+
+# Configuración esencial
+app.secret_key = 'mi_clave_secreta_super_segura' 
 app.config.from_object(Config)
+
+# Registro de Blueprints
 app.register_blueprint(usuario_bp)
 app.register_blueprint(config_bp)
 app.register_blueprint(registro_bp)
 app.register_blueprint(vehiculo_bp)
 
-# Inicializamos la base de datos con la configuración de tu .env
+# Inicializamos la base de datos
 db.init_app(app)
 
 @app.route('/')
 def inicio():
-    # Buscamos la configuración para saber el cupo total (ej: 50)
+    # Buscamos la configuración para saber el cupo total 
     config = Configuracion.query.first()
     
-    # Contamos cuántos autos tienen estado 'dentro' en la base de datos
+    # Contamos cuántos autos tienen estado 'dentro'
     autos_adentro = Vehiculo.query.filter_by(estado='dentro').count()
     
-    # Hacemos la resta para saber cuántos quedan vacíos
+    # Calculamos lugares libres
     if config:
         libres = config.capacidad_maxima - autos_adentro
     else:
-        libres = 0  # Si no hay configuración, por ahora decimos 0
+        libres = 0
 
-    # Le pasamos el número "libres" a la pantalla del Dashboard
     return render_template('dashboard.html', libres=libres)
 
 if __name__ == '__main__':
     with app.app_context():
-        db.create_all()  # Esto crea las tablas si no existen
-    app.run(debug=True)  # Esto mantiene el servidor encendido
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        db.create_all()  
+    app.run(debug=True)
