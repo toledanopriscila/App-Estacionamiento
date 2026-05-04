@@ -1,6 +1,6 @@
-Sistema de Gestión de Estacionamiento AutónomoDescripciónEste proyecto es una API RESTful desarrollada en Flask para gestionar un sistema de estacionamiento, permitiendo controlar vehículos, ingresos, egresos y tarifas. 
+Sistema de Gestión de Estacionamiento Autónomo Descripción Este proyecto es una API RESTful desarrollada en Flask para gestionar un sistema de estacionamiento, permitiendo controlar vehículos, ingresos, egresos y tarifas. 
 
-Integrantes del Grupo: Priscila Toledano, Selene Quintero
+Integrantes del Grupo: Priscila Toledano
 
 Requisitos Técnicos Backend: Flask
    
@@ -15,4 +15,4 @@ GET /espacios: Ver lugares disponibles.
 Cómo EjecutarClonar el repositorio.  
 Instalar dependencias: pip install -r requirements.txt.  
 Configurar el archivo .env.
-Ejecutar: python Taller.py.
+Ejecutar: python app.py.
