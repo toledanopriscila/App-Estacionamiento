@@ -11,7 +11,7 @@ def registrar_entrada():
     if not u_id:
         return redirect(url_for('usuario.login_usuario'))
 
-    # Buscamos el vehículo del usuario logueado
+    
     vehiculo = Vehiculo.query.filter_by(usuario_id=u_id).first()
 
     if not vehiculo:

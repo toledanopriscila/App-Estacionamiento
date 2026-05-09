@@ -3,7 +3,7 @@ from Models.configuracion import Configuracion
 from Models import db
 
 def gestionar_tarifas():
-    # Buscamos la configuración (dueño del estacionamiento)
+    
     config = Configuracion.query.first()
 
     if request.method == 'POST':

@@ -4,7 +4,7 @@ from Models import db
 
 def registrar_usuario():
     if request.method == 'POST':
-        # Limpiamos espacios al registrar
+        
         nombre = request.form.get('nombre').strip()
         apellido = request.form.get('apellido').strip()
         contrasena = request.form.get('contrasena').strip()
@@ -14,7 +14,7 @@ def registrar_usuario():
         try:
             db.session.add(nuevo_usuario)
             db.session.commit()
-            # Te manda a cargar el vehículo pasando el ID
+            
             return redirect(url_for('vehiculo.registrar_vehiculo', usuario_id=nuevo_usuario.id))
         except Exception as e:
             db.session.rollback()
