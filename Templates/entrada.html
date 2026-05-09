@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/estilos.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Confirmar Entrada</h1>
+        <div class="disponibilidad">
+            <p>Vehículo detectado: <b>{{ vehiculo.patente }}</b></p>
+            <p>Modelo: {{ vehiculo.modelo }}</p>
+        </div>
+        <form method="POST">
+            <button type="submit" class="boton-entrada">REGISTRAR ENTRADA AHORA</button>
+        </form>
+        <br>
+        <a href="/" style="text-align:center;">Volver al Menú</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/estilos.css') }}">
+    <style>
+        .ticket-box { border: 2px dashed #34495e; padding: 20px; border-radius: 10px; background: #fff; }
+        .monto-grande { font-size: 32px; color: #27ae60; display: block; margin: 15px 0; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Ticket de Salida</h1>
+        <div class="ticket-box">
+            <p>Patente: <b>{{ vehiculo.patente }}</b></p>
+            <p>Tiempo transcurrido: {{ tiempo }} hs</p>
+            <hr>
+            <span>TOTAL A COBRAR:</span>
+            <strong class="monto-grande">${{ total }}</strong>
+        </div>
+        <a href="/" class="btn" style="background:#2c3e50; text-align:center;">FINALIZAR PROCESO</a>
+    </div>
+</body>
+</html>

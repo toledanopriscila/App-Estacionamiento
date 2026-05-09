@@ -1,0 +1,57 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f7f6;
+    color: #333;
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+h1 {
+    color: #2c3e50;
+    text-align: center;
+}
+
+.disponibilidad {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 12px;
+    border-left: 8px solid #3498db; /* Azul profesional */
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.disponibilidad strong {
+    font-size: 1.5em;
+    color: #2ecc71; /* Verde para los números */
+}
+
+ul {
+    list-index-type: none;
+    padding: 0;
+}
+
+li {
+    background: white;
+    margin: 10px 0;
+    padding: 15px;
+    border-radius: 8px;
+    transition: 0.3s;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+li:hover {
+    transform: scale(1.02);
+}
+
+a {
+    text-decoration: none;
+    color: #34495e;
+    font-weight: 600;
+    display: block;
+}
+
+/* Colores para los botones de acción */
+.boton-entrada { border-left: 5px solid #27ae60; }
+.boton-salida { border-left: 5px solid #e74c3c; }

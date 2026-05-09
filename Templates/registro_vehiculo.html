@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Cargar Datos</title>
+</head>
+<body>
+    <h1>Cargar Datos del Vehículo</h1>
+    <form method="POST">
+        <!-- Campo oculto para el ID -->
+        <input type="hidden" name="usuario_id" value="{{ usuario_id }}">
+        
+        <label>Patente: </label>
+        <input type="text" name="patente" placeholder="ABC 123" required><br><br>
+        
+        <label>Tipo de Vehículo: </label>
+        <select name="tipo">
+            <option value="Auto">Auto</option>
+            <option value="Moto">Moto</option>
+            <option value="Camioneta">Camioneta</option>
+        </select><br><br>
+        
+        <button type="submit">Guardar Datos</button>
+    </form>
+</body>
+</html>

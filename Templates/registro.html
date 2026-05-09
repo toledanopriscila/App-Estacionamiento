@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Registro - Estacionamiento</title>
+</head>
+<body>
+    <h1>Crear Nueva Cuenta</h1>
+    
+    <!-- Quitamos el action para que sea más flexible y usamos el método POST -->
+    <form method="POST">
+        <label>Nombre:</label><br>
+        <input type="text" name="nombre" placeholder="Ej: Priscila" required><br><br>
+        
+        <label>Apellido:</label><br>
+        <input type="text" name="apellido" placeholder="Ej: Toledano" required><br><br>
+        
+        <label>Contraseña:</label><br>
+        <input type="password" name="contrasena" placeholder="Crea una clave" required><br><br>
+        
+        <!-- El botón ahora avisa que el siguiente paso es el vehículo -->
+        <button type="submit">Registrarme e Ingresar Datos de mi Vehículo</button>
+    </form>
+    
+    <br>
+    <p>¿Ya tienes cuenta? <a href="/login">Inicia sesión aquí</a></p>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Panel Estacionamiento</title>
+    <style>
+        body { font-family: sans-serif; text-align: center; background-color: #f4f7f6; padding: 20px; }
+        .container { max-width: 600px; margin: auto; background: white; padding: 20px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+        .disponibles { font-size: 24px; color: #2ecc71; font-weight: bold; }
+        .btn { display: block; padding: 15px; margin: 10px 0; text-decoration: none; color: #333; background: #fff; border-left: 5px solid #3498db; border-radius: 5px; transition: 0.3s; }
+        .btn:hover { background: #e8f4fd; }
+        .admin-section { border: 2px dashed #e74c3c; padding: 10px; margin-top: 20px; border-radius: 8px; background-color: #fff9f9; }
+        .logout { color: #e74c3c; text-decoration: none; font-size: 14px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Parking App</h1>
+        
+        <!-- ESTO SE VE SIEMPRE -->
+        <h3>Estado del Estacionamiento</h3>
+        <p class="disponibles">Lugares disponibles: {{ libres }}</p>
+        <hr>
+
+        {% if session['usuario_nombre'] %}
+            <!-- VISTA USUARIO LOGUEADO -->
+            <p>Bienvenida, <b>{{ session['usuario_nombre'] }}</b>! | <a href="/logout" class="logout">Cerrar Sesión</a></p>
+            
+            <a href="/registrar_vehiculo" class="btn" style="border-left-color: #f1c40f;">Cargar Datos del Vehículo</a>
+            <a href="/entrada" class="btn" style="border-left-color: #27ae60; font-weight: bold;">MARCAR ENTRADA</a>
+            <a href="/salida" class="btn" style="border-left-color: #e67e22; font-weight: bold;">MARCAR SALIDA</a>
+
+        {% else %}
+            <!-- VISTA VISITANTE -->
+            <h2>¡Bienvenido!</h2>
+            <p>Por favor, ingresá para gestionar tu vehículo.</p>
+            <a href="/login" class="btn" style="border-left-color: #3498db;">Iniciar Sesión</a>
+            <a href="/registro" class="btn" style="border-left-color: #95a5a6;">Registrarse (Nuevo Usuario)</a>
+        {% endif %}
+
+        <!-- APARTADO ADMINISTRADOR (Fuera del IF para que se vea siempre) -->
+        <div class="admin-section">
+            <p style="color: #c0392b; font-weight: bold; margin-bottom: 5px;">PANEL DE ADMINISTRADOR</p>
+            <p><small>Configuración de precios y cupo total</small></p>
+            <a href="/tarifas" class="btn" style="border-left-color: #c0392b;">Configurar Tarifas y Lugares</a>
+        </div>
+    </div>
+</body>
+</html>

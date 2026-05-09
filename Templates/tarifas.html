@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Configurar Tarifas</title>
+</head>
+<body>
+    <h1>Configuración de Precios y Capacidad</h1>
+    <form method="POST">
+        <label>Tarifa por Hora: </label>
+        <input type="number" name="tarifa_hora" value="{{ config.tarifa_hora if config else 0 }}" step="0.01" required><br><br>
+        
+        <label>Media Estadía: </label>
+        <input type="number" name="tarifa_media" value="{{ config.tarifa_media_estadia if config else 0 }}" step="0.01" required><br><br>
+        
+        <label>Día Completo: </label>
+        <input type="number" name="tarifa_dia" value="{{ config.tarifa_dia_completo if config else 0 }}" step="0.01" required><br><br>
+        
+        <label>Capacidad Máxima del Estacionamiento: </label>
+        <input type="number" name="capacidad" value="{{ config.capacidad_maxima if config else 0 }}" required><br><br>
+        
+        <button type="submit">Guardar Configuración</button>
+    </form>
+    <br>
+    <a href="/">Volver al Panel Principal</a>
+</body>
+</html>
