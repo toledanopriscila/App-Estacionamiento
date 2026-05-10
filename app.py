@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect, url_for
+from flask import Flask, redirect, url_for 
 from Config import Config
 from Models import db
 from Models.usuario import Usuario  
@@ -17,7 +17,7 @@ app = Flask(__name__)
 app.secret_key = 'mi_clave_secreta_super_segura' 
 app.config.from_object(Config)
 
-
+# Registro de Blueprints (Rutas)
 app.register_blueprint(usuario_bp)
 app.register_blueprint(config_bp)
 app.register_blueprint(registro_bp)
@@ -28,19 +28,21 @@ db.init_app(app)
 
 @app.route('/')
 def inicio():
-    # Buscamos la configuración para saber el cupo total 
+   
     config = Configuracion.query.first()
     
-    # Contamos cuántos autos tienen estado 'dentro'
+    
     autos_adentro = Vehiculo.query.filter_by(estado='dentro').count()
     
-    # Calculamos lugares libres
+    
     if config:
         libres = config.capacidad_maxima - autos_adentro
+        mensaje = f"API de Estacionamiento Activa. Lugares disponibles: {libres} de {config.capacidad_maxima}."
     else:
-        libres = 0
+        mensaje = "API de Estacionamiento Activa. (Falta configurar capacidad en el sistema)."
 
-    return render_template('dashboard.html', libres=libres)
+    
+    return mensaje
 
 if __name__ == '__main__':
     with app.app_context():
