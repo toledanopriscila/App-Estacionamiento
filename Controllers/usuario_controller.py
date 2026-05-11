@@ -23,3 +23,7 @@ def login_usuario():
             session['usuario_nombre'] = user.nombre
             return f"Sesión iniciada para {user.nombre}"
     return "Login Activo"
+
+def logout_usuario():
+    session.clear()
+    return redirect(url_for('usuario.login_usuario'))
